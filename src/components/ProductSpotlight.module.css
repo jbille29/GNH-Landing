@@ -1,0 +1,102 @@
+.products {
+  padding: 5rem 0;
+  background-color: #f4e9e1;
+}
+
+
+.container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2437;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #6b7280;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.spotlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.imageWrapper {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #cd8153;
+}
+
+.productImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.productInfo {
+  max-width: 500px;
+  text-align: center;
+}
+
+.productName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #783b26;
+  margin-bottom: 1rem;
+}
+
+.productDescription {
+  color: #4b5563;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+
+.notifyButton {
+  background: linear-gradient(to right, #cd8153, #783b26);
+  color: white;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notifyButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .spotlight {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .productInfo {
+    text-align: left;
+  }
+}
