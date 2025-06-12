@@ -1,40 +1,54 @@
 import React from 'react';
 import styles from './ProductSpotlight.module.css';
+import { Drumstick, Leaf, Flower, Sprout } from 'lucide-react';
+
+import barImg from '../assets/bar1.png';
 
 export default function ProductSpotlight({ onSignUpClick }) {
   return (
-    <section className={styles.products}>
+    <section id="product" className={styles.products}>
       <div className={styles.container}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>
-            Meet the GoodnightHoney Bar
-          </h2>
-          <p className={styles.subtitle}>
-            Our first evening snack is almost here. Packed with protein, calming herbs, and just the right touch of sweetness—it's made for winding down.
+
+        <div className={styles.imageWrapper}>
+          <img 
+            src={barImg}
+            alt="GoodnightHoney Sleep Bar"
+            className={styles.productImage}
+          />
+        </div>
+
+        <div className={styles.specs}>
+          <div className={styles.spec}>
+            <Drumstick className={styles.specIcon} />
+            9g Protein
+          </div>
+          <div className={styles.spec}>
+            <Leaf className={styles.specIcon} />
+            5g Fiber
+          </div>
+          <div className={styles.spec}>
+            <Flower className={styles.specIcon} />
+            Chamomile
+          </div>
+          <div className={styles.spec}>
+            <Sprout className={styles.specIcon} />
+            Ashwagandha
+          </div>
+        </div>
+
+        <div className={styles.desire}>
+          <h2 className={styles.title}>Your New Nighttime Ritual</h2>
+          <p className={styles.description}>
+            The GoodnightHoney Bar is made to help you wind down — naturally. Real ingredients, cozy flavor, and a calming blend of herbs. Sleepy never tasted so good.
           </p>
         </div>
 
-        <div className={styles.spotlight}>
-          <div className={styles.imageWrapper}>
-            <img 
-              src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop"
-              alt="GoodnightHoney Sleep Bar"
-              className={styles.productImage}
-            />
-          </div>
-          <div className={styles.productInfo}>
-            <h3 className={styles.productName}>The GoodnightHoney Sleep Bar</h3>
-            <p className={styles.productDescription}>
-              9g of protein • 5g of fiber • calming herbs like chamomile and ashwagandha  
-              <br /><br />
-              No fillers. No junk. Just real ingredients for real rest.
-            </p>
-            <button className={styles.notifyButton} onClick={onSignUpClick}>
-              Notify Me When It’s Ready
-            </button>
-          </div>
-        </div>
+        <button className={styles.notifyButton} onClick={onSignUpClick}>
+          Notify Me When It’s Ready
+        </button>
+
       </div>
     </section>
+
   );
 }

@@ -100,6 +100,7 @@ export default function Footer() {
         </div>
         
         {/* Newsletter Signup */}
+        {/*}
         <div className={styles.newsletter}>
           <div className={styles.newsletterContent}>
             <div className={styles.newsletterInfo}>
@@ -118,7 +119,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
+        */}
+        {/* Newsletter Signup */}
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           {/*

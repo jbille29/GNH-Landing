@@ -1,6 +1,25 @@
+:root {
+  --color-bg: #1f2437;
+  --color-text: #e8e6e3;
+
+  --color-accent: #7581a5;
+  --color-accent-light: #aab1c9;
+  --color-accent-dark: #2c2e4b;
+
+  --color-muted: #6b7280;
+  --color-hover: #4b5563;
+  --color-button-bg: #2c2e4b;
+  --color-button-hover: #3a4261;
+
+  --color-border: #313646;
+  --color-input-bg: #2a2d3e;
+  --color-shadow: rgba(0, 0, 0, 0.2);
+}
+
+
 .footer {
-  background-color: #111827;
-  color: white;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 .container {
@@ -10,10 +29,11 @@
 }
 
 .mainContent {
-  padding: 4rem 0;
+  padding: 1rem 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  margin-bottom: 1rem;
 }
 
 .brandSection {
@@ -24,14 +44,14 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(to right, #fbbf24, #f59e0b);
+  background: linear-gradient(to right, var(--color-accent-light), var(--color-accent));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .brandDescription {
-  color: #d1d5db;
+  color: var(--color-accent-light);
   margin-bottom: 1.5rem;
   line-height: 1.6;
   max-width: 28rem;
@@ -46,19 +66,18 @@
 .contactItem {
   display: flex;
   align-items: center;
-  color: #d1d5db;
+  color: var(--color-accent-light);
 }
 
 .contactIcon {
   width: 1.25rem;
   height: 1.25rem;
   margin-right: 0.75rem;
-  color: #fbbf24;
+  color: var(--color-accent);
 }
 
-.linksSection {
-  /* Styles for link sections */
-}
+/* Optional Link Sections */
+.linksSection {}
 
 .sectionTitle {
   font-size: 1.125rem;
@@ -76,17 +95,18 @@
 }
 
 .link {
-  color: #d1d5db;
+  color: var(--color-accent-light);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .link:hover {
-  color: #fbbf24;
+  color: var(--color-accent);
 }
 
+/* Newsletter (optional) */
 .newsletter {
-  border-top: 1px solid #374151;
+  border-top: 1px solid var(--color-border);
   padding: 2rem 0;
 }
 
@@ -108,7 +128,7 @@
 }
 
 .newsletterDescription {
-  color: #d1d5db;
+  color: var(--color-accent-light);
 }
 
 .newsletterForm {
@@ -119,27 +139,27 @@
 
 .newsletterInput {
   padding: 0.5rem 1rem;
-  background-color: #374151;
-  border: 1px solid #4b5563;
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
-  color: white;
+  color: var(--color-text);
   transition: all 0.3s ease;
 }
 
 .newsletterInput:focus {
   outline: none;
-  border-color: #f59e0b;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(117, 129, 165, 0.2);
 }
 
 .newsletterInput::placeholder {
-  color: #9ca3af;
+  color: var(--color-accent-light);
 }
 
 .newsletterButton {
   padding: 0.5rem 1.5rem;
-  background: linear-gradient(to right, #f59e0b, #ea580c);
-  color: white;
+  background: linear-gradient(to right, var(--color-accent-light), var(--color-accent));
+  color: var(--color-bg);
   font-weight: 600;
   border-radius: 0.5rem;
   border: none;
@@ -148,11 +168,12 @@
 }
 
 .newsletterButton:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px -3px var(--color-shadow);
 }
 
+/* Bottom Bar */
 .bottomBar {
-  border-top: 1px solid #374151;
+  border-top: 1px solid var(--color-border);
   padding: 1.5rem 0;
   display: flex;
   flex-direction: column;
@@ -161,7 +182,7 @@
 }
 
 .copyright {
-  color: #9ca3af;
+  color: var(--color-muted);
   font-size: 0.875rem;
   margin-bottom: 1rem;
 }
@@ -177,16 +198,16 @@
   justify-content: center;
   width: 2.5rem;
   height: 2.5rem;
-  background-color: #374151;
+  background-color: var(--color-input-bg);
   border-radius: 50%;
-  color: #9ca3af;
+  color: var(--color-accent-light);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .socialLink:hover {
-  color: #fbbf24;
-  background-color: #4b5563;
+  color: var(--color-accent);
+  background-color: var(--color-button-hover);
 }
 
 .socialIcon {
@@ -194,20 +215,20 @@
   height: 1.25rem;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (min-width: 640px) {
   .container {
     padding: 0 1.5rem;
   }
-  
+
   .newsletterForm {
     flex-direction: row;
   }
-  
+
   .bottomBar {
     flex-direction: row;
   }
-  
+
   .copyright {
     margin-bottom: 0;
   }
@@ -217,11 +238,11 @@
   .mainContent {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .newsletterContent {
     flex-direction: row;
   }
-  
+
   .newsletterInfo {
     margin-bottom: 0;
   }
@@ -231,7 +252,7 @@
   .container {
     padding: 0 2rem;
   }
-  
+
   .mainContent {
     grid-template-columns: 2fr 1fr 1fr;
   }

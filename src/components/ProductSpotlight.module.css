@@ -1,79 +1,85 @@
 .products {
-  padding: 5rem 0;
-  background-color: #f4e9e1;
+  background-color: #fdfcf9; /* near-white background */
+  padding: 5rem 1rem;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
 }
-
 
 .container {
-  max-width: 80rem;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.title {
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #1f2437;
-  margin-bottom: 1.5rem;
-}
-
-.subtitle {
-  font-size: 1.25rem;
-  color: #6b7280;
   max-width: 48rem;
   margin: 0 auto;
-  line-height: 1.6;
-}
-
-.spotlight {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
 }
 
 .imageWrapper {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 1rem;
-  overflow: hidden;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
-  border: 1px solid #cd8153;
+  margin-bottom: 2rem;
 }
 
 .productImage {
   width: 100%;
+  max-width: 400px;
   height: auto;
-  display: block;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e0dc;
 }
 
-.productInfo {
-  max-width: 500px;
-  text-align: center;
+/* 🟣 Badge Section */
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
 }
 
-.productName {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #783b26;
-  margin-bottom: 1rem;
+.spec {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #eef0f4;
+  color: #1f2437;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
 }
 
-.productDescription {
-  color: #4b5563;
-  font-size: 1.125rem;
-  line-height: 1.75;
+.spec:hover {
+  transform: scale(1.05);
+}
+
+.specIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #7581a5;
+}
+
+/* Desire Text */
+.desire {
   margin-bottom: 2rem;
 }
 
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2437;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.125rem;
+  color: #4b5563;
+  line-height: 1.7;
+}
+
+/* CTA Button */
 .notifyButton {
-  background: linear-gradient(to right, #cd8153, #783b26);
-  color: white;
+  background: linear-gradient(to right, #aab1c9, #7581a5);
+  color: #1f2437;
   font-weight: 600;
   padding: 1rem 2rem;
   font-size: 1rem;
@@ -86,17 +92,4 @@
 .notifyButton:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive */
-@media (min-width: 768px) {
-  .spotlight {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .productInfo {
-    text-align: left;
-  }
 }

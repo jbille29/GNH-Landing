@@ -1,9 +1,33 @@
+:root {
+  /* GNH Core Colors */
+  --color-bg: #1f2437;
+  --color-text: #e8e6e3;
+
+  /* Accent Palette */
+  --color-accent: #7581a5;
+  --color-accent-light: #aab1c9;
+  --color-accent-dark: #2e354e;
+
+  /* Circle Colors */
+  --circle-1: var(--color-accent);
+  --circle-2: var(--color-accent-light);
+  --circle-3: var(--color-accent-dark);
+
+  /* Button Colors */
+  --button-gradient-start: var(--color-accent-light);
+  --button-gradient-end: var(--color-accent);
+  --button-hover-bg: #2a2d3e;
+
+  /* Shadows */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+
 .hero {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  background: linear-gradient(135deg, #1f2437 0%, #2f3146 50%, #3e405d 100%);
-
+  background: var(--color-bg);
 }
 
 .backgroundPattern {
@@ -16,80 +40,88 @@
   position: absolute;
   border-radius: 50%;
 }
-
 .circle1 {
   top: 5rem;
   left: 5rem;
   width: 8rem;
   height: 8rem;
-   background-color: #e6b676; 
+  background-color: var(--circle-1);
 }
-
 .circle2 {
   top: 15rem;
   right: 8rem;
   width: 6rem;
   height: 6rem;
-   background-color: #c98f5f;
+  background-color: var(--circle-2);
 }
-
 .circle3 {
   bottom: 8rem;
   left: 33.333333%;
   width: 10rem;
   height: 10rem;
-  background-color: #b5a76c;
+  background-color: var(--circle-3);
+}
+
+.waveWrapper {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.wave {
+  display: block;
+  width: 100%;
+  height: 100px;
 }
 
 .container {
   position: relative;
   max-width: 80rem;
   margin: 0 auto;
+  padding: 0 1.5rem;
 }
-
 .content {
   text-align: center;
   padding-top: 1rem;
 }
-
 .logo {
-  width: 15rem;
-  margin-bottom: 0.5rem;
+  width: 14rem;
+  margin-bottom: 0.8rem;
 }
 
 .heading {
   font-size: 3rem;
   font-weight: 700;
-  color: #fdfcf9;
-  margin-bottom: 1.5rem;
+  color: var(--color-text);
   line-height: 1.1;
+  margin-top: 4.5rem;
+  margin-bottom: 0;
 }
-
 .headingAccent {
   display: block;
-  background: linear-gradient(to right, #e6b676, #c98f5f);
+  background: linear-gradient(to right, var(--button-gradient-start), var(--button-gradient-end));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+  margin-bottom: 0.6rem;
 }
-
 .headingSubtitle {
   display: block;
   font-size: 2.25rem;
   font-weight: 500;
-  color: #d6d2c4;
+  color: var(--color-text);
+  margin-bottom: 1rem;
 }
-
 .subtitle {
   font-size: 1.25rem;
-  color: #d6d2c4;
-  margin-bottom: 3rem;
+  color: var(--color-text);
+  margin: 0 auto 3rem auto;
   max-width: 48rem;
-  margin-left: auto;
-  margin-right: auto;
   line-height: 1.6;
 }
 
+/* Buttons */
 .ctaButtons {
   display: flex;
   flex-direction: column;
@@ -98,7 +130,6 @@
   align-items: center;
   margin-bottom: 4rem;
 }
-
 .button {
   display: inline-flex;
   align-items: center;
@@ -110,39 +141,34 @@
   border: none;
   font-size: 1rem;
 }
-
 .primaryButton {
-  background: linear-gradient(to right, #e6b676, #c98f5f);
-  color: white;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, var(--button-gradient-start), var(--button-gradient-end));
+  color: var(--color-bg);
+  box-shadow: 0 10px 15px -3px var(--shadow-color);
 }
-
 .primaryButton:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 25px -5px var(--shadow-color);
   transform: scale(1.05);
 }
-
 .secondaryButton {
-  border: 2px solid #e6b676;
-  color: #dbc6a8;
+  border: 2px solid var(--color-accent);
+  color: var(--color-text);
   background: transparent;
 }
-
 .secondaryButton:hover {
-  background-color: #2a2d3e;
+  background-color: var(--button-hover-bg);
 }
-
 .buttonIcon {
   margin-left: 0.5rem;
   width: 1.25rem;
   height: 1.25rem;
   transition: transform 0.3s ease;
 }
-
 .primaryButton:hover .buttonIcon {
   transform: translateX(0.25rem);
 }
 
+/* Stats */
 .stats {
   display: grid;
   grid-template-columns: 1fr;
@@ -150,56 +176,42 @@
   max-width: 32rem;
   margin: 0 auto;
 }
-
 .stat {
   text-align: center;
 }
-
 .statNumber {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #d97706;
+  color: var(--color-accent-light);
   margin-bottom: 0.5rem;
 }
-
 .statLabel {
-  color: #4b5563;
+  color: var(--color-text);
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (min-width: 640px) {
   .ctaButtons {
     flex-direction: row;
   }
-  
-  .container {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
 }
-
 @media (min-width: 768px) {
   .heading {
     font-size: 4.5rem;
   }
-  
   .headingSubtitle {
     font-size: 3rem;
   }
-  
   .subtitle {
     font-size: 1.5rem;
   }
-  
   .stats {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 @media (min-width: 1024px) {
   .container {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
-

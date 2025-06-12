@@ -1,28 +1,20 @@
+// src/components/SignUpModal.jsx
 import React, { useState } from 'react';
+import ReactMailchimpSubscribe from 'react-mailchimp-subscribe';
 import { X, Mail, User, ArrowRight } from 'lucide-react';
 import styles from './SignUpModal.module.css';
 
-export default function SignUpModal({ isOpen, onClose }) {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    preferences: 'all'
-  });
+// Replace with your Mailchimp embed/form URL (from the "Embedded forms" section)
+const MAILCHIMP_URL =
+  "https://eatgoodnighthoney.us8.list-manage.com/subscribe/post-json?u=f3f661adf1bbed631ca31004a&id=f027d72c3e";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // Show success message or redirect
-    alert('Thank you for signing up! Welcome to our snack community!');
-    onClose();
-  };
+
+export default function SignUpModal({ isOpen, onClose }) {
+  const [formData, setFormData] = useState({ name: '', email: '', preferences: 'all' });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   if (!isOpen) return null;
@@ -30,23 +22,11 @@ export default function SignUpModal({ isOpen, onClose }) {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContainer}>
-        {/* Backdrop */}
-        <div 
-          className={styles.backdrop}
-          onClick={onClose}
-        ></div>
-
-        {/* Modal */}
+        <div className={styles.backdrop} onClick={onClose}></div>
         <div className={styles.modal}>
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className={styles.closeButton}
-          >
+          <button onClick={onClose} className={styles.closeButton}>
             <X className={styles.closeIcon} />
           </button>
-
-          {/* Header */}
           <div className={styles.header}>
             <div className={styles.iconWrapper}>
               <Mail className={styles.headerIcon} />
@@ -55,75 +35,77 @@ export default function SignUpModal({ isOpen, onClose }) {
             <p className={styles.subtitle}>Get exclusive access to new flavors and special offers</p>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.inputGroup}>
-              <label htmlFor="name" className={styles.label}>
-                Full Name
-              </label>
-              <div className={styles.inputWrapper}>
-                <User className={styles.inputIcon} />
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className={styles.input}
-                  placeholder="Enter your full name"
-                />
-              </div>
+          {!submitted ? (
+            <ReactMailchimpSubscribe
+              url={MAILCHIMP_URL}
+              render={({ subscribe, status, message }) => (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    subscribe({
+                      EMAIL: formData.email,
+                      FNAME: formData.name,
+                      MERGE2: formData.preferences,
+                    });
+                  }}
+
+                  className={styles.form}
+                >
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="name" className={styles.label}>First Name</label>
+                    <div className={styles.inputWrapper}>
+                      <User className={styles.inputIcon} />
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className={styles.input}
+                        placeholder="Enter your first name"
+                      />
+                    </div>
+                  </div>
+
+                  <div className={styles.inputGroup}>
+                    <label htmlFor="email" className={styles.label}>Email Address</label>
+                    <div className={styles.inputWrapper}>
+                      <Mail className={styles.inputIcon} />
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className={styles.input}
+                        placeholder="Enter your email address"
+                      />
+                    </div>
+                  </div>
+
+                  
+
+                  <button type="submit" className={styles.submitButton}>
+                    Sign Me Up
+                    <ArrowRight className={styles.submitIcon} />
+                  </button>
+                  {status === 'sending' && <p>Sending...</p>}
+                  {status === 'error' && <p dangerouslySetInnerHTML={{ __html: message }} />}
+                  {status === 'success' && <p>Thanks for subscribing!</p>}
+
+                </form>
+              )}
+            />
+          ) : (
+            <div className={styles.successMessage}>
+              <h3>Thank you for signing up!</h3>
+              <p>Welcome to our snack community. Stay tuned for updates.</p>
+              <button onClick={onClose} className={styles.closeButton}>Close</button>
             </div>
+          )}
 
-            <div className={styles.inputGroup}>
-              <label htmlFor="email" className={styles.label}>
-                Email Address
-              </label>
-              <div className={styles.inputWrapper}>
-                <Mail className={styles.inputIcon} />
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className={styles.input}
-                  placeholder="Enter your email address"
-                />
-              </div>
-            </div>
-
-            <div className={styles.inputGroup}>
-              <label htmlFor="preferences" className={styles.label}>
-                Snack Preferences
-              </label>
-              <select
-                id="preferences"
-                name="preferences"
-                value={formData.preferences}
-                onChange={handleChange}
-                className={styles.select}
-              >
-                <option value="all">All Types</option>
-                <option value="sweet">Sweet Snacks</option>
-                <option value="savory">Savory Snacks</option>
-                <option value="healthy">Healthy Options</option>
-                <option value="vegan">Vegan Only</option>
-              </select>
-            </div>
-
-            <button
-              type="submit"
-              className={styles.submitButton}
-            >
-              Sign Me Up
-              <ArrowRight className={styles.submitIcon} />
-            </button>
-          </form>
-
-          {/* Footer */}
           <p className={styles.footer}>
             By signing up, you agree to our Terms of Service and Privacy Policy.
           </p>
