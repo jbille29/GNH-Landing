@@ -1,95 +1,124 @@
 .products {
-  background-color: #fdfcf9; /* near-white background */
-  padding: 5rem 1rem;
-  text-align: center;
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
+  background-color: #f9f7f5;
+  padding: 0;
+}
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
 }
 
-.container {
-  max-width: 48rem;
-  margin: 0 auto;
+.grid {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2rem;
+  width: 100%;
 }
 
 .imageWrapper {
-  margin-bottom: 2rem;
+  position: relative;
+  flex: 1;
+  height: auto;
+  overflow: hidden;
 }
 
 .productImage {
+  height: 100%;
   width: 100%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 1rem;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e0dc;
-}
-
-/* 🟣 Badge Section */
-.specs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.spec {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background-color: #eef0f4;
-  color: #1f2437;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: 9999px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease;
-}
-
-.spec:hover {
-  transform: scale(1.05);
-}
-
-.specIcon {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: #7581a5;
-}
-
-/* Desire Text */
-.desire {
-  margin-bottom: 2rem;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  font-weight: 800;
   color: #1f2437;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
-
 .description {
   font-size: 1.125rem;
   color: #4b5563;
+  margin-bottom: 2rem;
   line-height: 1.7;
 }
-
-/* CTA Button */
-.notifyButton {
-  background: linear-gradient(to right, #aab1c9, #7581a5);
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+.spec {
+  background-color: #eef0f4;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.95rem;
   color: #1f2437;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  transition: transform 0.2s ease;
+}
+.spec:hover { transform: scale(1.05); }
+.specIcon {
+  width: 1rem; height: 1rem;
+  color: #7581a5;
+  margin-right: 0.35rem;
+}
+.quote {
+  font-style: italic;
+  color: #333;
+  border-left: 4px solid #7581a5;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+.quote cite {
+  display: block;
+  font-style: normal;
   font-weight: 600;
-  padding: 1rem 2rem;
-  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #555;
+}
+.notifyButton {
+  background: linear-gradient(
+    to right,
+    #aab1c9,
+    #7581a5
+  );
+  color: #1f2437;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
   border-radius: 9999px;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 .notifyButton:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+
+.content {
+  flex: 1;
+  max-width: 600px;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+@media (min-width: 768px) {
+  .grid {
+    flex-direction: row;
+    align-items: stretch;  /* Let children stretch full height */
+  }
+  .content {
+    padding-right: 20rem;
+  }
+  .imageWrapper {
+    height: 100vh; /* Full viewport height */
+  }
 }
